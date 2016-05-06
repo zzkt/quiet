@@ -6,7 +6,7 @@ A simple package to disconnect from the online world for a while, possibly recon
 
 ~M-x quiet~ will disconnect from the network, optionally reconnecting after a certain time.
 
-the function ~quiet~ can be used anywhere in emacs where lack of network access could be seen a as a feature, e.g.  as a mode-hook (or with ~defadvice~) to your preferred distraction free writing environment. 
+the function ~quiet~ can be used anywhere in emacs where a lack of network access could be seen as a feature, e.g.  as a mode-hook (or with ~defadvice~) to your preferred distraction free writing environment. 
 
 ** reconnection
 
