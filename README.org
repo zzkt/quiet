@@ -10,7 +10,7 @@ the function ~quiet~ can be used anywhere in emacs where lack of network access 
 
 * reconection
 
- ~M-x quiet-reconnect~ will manually reconect to the network, however you can enable a timer to automatically reconnect by setting ~quiet-timer~ to a number of minutes. e.g. ~(setq quiet-timer 60)~ will let ~quiet~ to reconnect after one hour. if  ~quiet-timer~ is set to 0 it won't reconnect automatically.
+ ~M-x quiet-reconnect~ will manually reconect to the network, however you can enable a timer to automatically reconnect by setting ~quiet-timer~ to a number of minutes. e.g. ~(setq quiet-timer 60)~ will enable ~quiet~ to reconnect after one hour. if  ~quiet-timer~ is set to 0 it won't reconnect automatically.
 
 * network interfaces
 
