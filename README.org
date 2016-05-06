@@ -1,18 +1,18 @@
-* quiet
+** quiet
 
-A simple package to disconnect from the online world for a while, possibly reconnecting later. Any interuptions or distractions which occur once the command is run are guaranteed to be local.
+A simple package to disconnect from the online world for a while, possibly reconnecting later. Any interruptions or distractions which occur once the command is run are guaranteed to be local.
 
-* disconnection
+** disconnection
 
-~M-x quiet~ will disconnect from the network, optionally reconecting after a certain time.
+~M-x quiet~ will disconnect from the network, optionally reconnecting after a certain time.
 
 the function ~quiet~ can be used anywhere in emacs where lack of network access could be seen a as a feature, e.g.  as a mode-hook (or with ~defadvice~) to your preferred distraction free writing environment. 
 
-* reconection
+** reconnection
 
- ~M-x quiet-reconnect~ will manually reconect to the network, however you can enable a timer to automatically reconnect by setting ~quiet-timer~ to a number of minutes. e.g. ~(setq quiet-timer 60)~ will enable ~quiet~ to reconnect after one hour. if  ~quiet-timer~ is set to 0 it won't reconnect automatically.
+ ~M-x quiet-reconnect~ will manually reconnect to the network, however you can enable a timer to automatically reconnect by setting ~quiet-timer~ to a number of minutes. e.g. ~(setq quiet-timer 60)~ will enable ~quiet~ to reconnect after one hour. if  ~quiet-timer~ is set to 0 it won't reconnect automatically.
 
-* network interfaces
+** network interfaces
 
 you may want to ~customize~ or ~setq~ ~quiet-disconnect~ and ~quiet-connect~ to the appropriate shell commands to turn your network (or single interface) on or off.
 
@@ -20,7 +20,7 @@ you may want to ~customize~ or ~setq~ ~quiet-disconnect~ and ~quiet-connect~ to 
  - GNU/Linux. ~ifup wlan0~ and ~ifdown wlan0~
  - *BSD. ~service netif {stop, start}~
 
-* further 
+** further 
 
  - Mihaly Csikszentmihályi (1990). Flow: The Psychology of Optimal Experience. Harper & Row. ISBN 9780060162535
  - The Myth of Monotasking. https://hbr.org/2011/11/the-myth-of-monotasking/ 
