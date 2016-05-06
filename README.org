@@ -4,17 +4,17 @@ A simple package to disconnect from the online world for a while, possibly recon
 
 * disconnection
 
-``M-x quiet`` will disconnect from the network, optionally reconecting after a certain time.
+~M-x quiet~ will disconnect from the network, optionally reconecting after a certain time.
 
-the function ``quiet`` can be used anywhere in emacs where lack of network access could be seen a as a feature, e.g.  as a mode-hook (or with ``defadvice``) to your preferred distraction free writing environment. 
+the function ~quiet~ can be used anywhere in emacs where lack of network access could be seen a as a feature, e.g.  as a mode-hook (or with ~defadvice~) to your preferred distraction free writing environment. 
 
 * reconection
 
- ``M-x quiet-reconnect`` will manually reconect to the network, however you can enable a timer to automatically reconnect by setting ``quiet-timer`` to a number of minutes. e.g. ``(setq quiet-timer 60)`` will let ``quiet`` to reconnect after one hour. if  ``quiet-timer`` is set to 0 it won't reconnect automatically.
+ ~M-x quiet-reconnect~ will manually reconect to the network, however you can enable a timer to automatically reconnect by setting ~quiet-timer~ to a number of minutes. e.g. ~(setq quiet-timer 60)~ will let ~quiet~ to reconnect after one hour. if  ~quiet-timer~ is set to 0 it won't reconnect automatically.
 
 * network interfaces
 
-you may want to ``customize`` or ``setq`` ``quiet-disconnect`` and ``quiet-connect`` to the appropriate shell commands to turn your network (or single interface) on or off.
+you may want to ~customize~ or ~setq~ ~quiet-disconnect~ and ~quiet-connect~ to the appropriate shell commands to turn your network (or single interface) on or off.
 
  - MacOS (current default)
     % networksetup -setairportpower airport {on,off}
