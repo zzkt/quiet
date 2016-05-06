@@ -16,13 +16,9 @@ the function ~quiet~ can be used anywhere in emacs where lack of network access 
 
 you may want to ~customize~ or ~setq~ ~quiet-disconnect~ and ~quiet-connect~ to the appropriate shell commands to turn your network (or single interface) on or off.
 
- - MacOS (current default)
-    % networksetup -setairportpower airport {on,off}
- - Linux 
-    % ifup wlan0
-    % ifdown wlan0
- - BSD
-    % service netif {stop, start}
+ - MacOS (current default). ~networksetup -setairportpower airport {on,off}~
+ - GNU/Linux. ~ifup wlan0~ and ~ifdown wlan0~
+ - *BSD. ~service netif {stop, start}~
 
 * further 
 
