@@ -45,7 +45,6 @@
 ;;
 ;;; Code:
 
-(provide 'quiet)
 
 (defcustom  quiet-disconnect "networksetup -setairportpower airport off"
   "Shell command to turn off network connection(s)"
@@ -64,7 +63,7 @@
   :type 'integer
   :group 'quiet)
 
-;; M-x quiet
+;;;###autoload
 (defun quiet ()
   "quieten network distractions for a while..."
   (interactive)
@@ -75,10 +74,13 @@
       (progn 
 	(run-at-time (* quiet-timer 60) nil 'quiet-reconnect))))
 
+;;;###autoload
 (defun quiet-reconnect ()
   (interactive)
   (save-window-excursion
     (message "reconnecting after ~%d %s" quiet-timer (if (= quiet-timer 1) "minute" "minutes"))
     (async-shell-command quiet-connect)))
+
+(provide 'quiet)
 
 ;;; quiet.el ends here
