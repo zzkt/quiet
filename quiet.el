@@ -1,12 +1,12 @@
-;;; quiet.el --- disconnect from the online world for a while
+;;; quiet.el --- Disconnect from the online world for a while
 
 ;; Copyright 2016 FoAM vzw
 ;;
 ;; Author: nik gaffney <nik@fo.am>
 ;; Created: 2016-05-05
 ;; Version: 0.1
-;; Keywords: quiet, distraction, network, detachment, offline
-;; X-URL: https://github.com/zzkt/quiet
+;; Keywords: convenience, quiet, distraction, network, detachment, offline
+;; URL: https://github.com/zzkt/quiet
 
 ;; This file is not part of GNU Emacs.
 
@@ -28,13 +28,13 @@
 ;;; Commentary:
 
 ;; A simple package to disconnect from the online world for a while,
-;; possibly reconnecting later. Any interruptions or distractions
+;; possibly reconnecting later.  Any interruptions or distractions
 ;; which occur once the command is run are guaranteed to be local.
 ;;
 ;; 'M-x quiet' will disconnect from the network, optionally
 ;; reconnecting after a certain time.
 ;;
-;; the function 'quiet' can be used anywhere in emacs where a lack of
+;; the function 'quiet' can be used anywhere in Emacs where a lack of
 ;; network access could be seen as a feature, e.g. as a mode-hook (or
 ;; with defadvice) to your preferred distraction free writing
 ;; environment.
@@ -47,35 +47,39 @@
 
 
 (defcustom  quiet-disconnect "networksetup -setairportpower airport off"
-  "Shell command to turn off network connection(s)"
+  "Shell command to turn off network connection(s)."
   :type 'string
   :options '("networksetup -setairportpower airport off" "ifdown wlan0")
   :group 'quiet)
 
 (defcustom  quiet-connect "networksetup -setairportpower airport on"
-  "Shell command to turn on network connection(s)"
+  "Shell command to turn on network connection(s)."
   :type 'string
   :options '("networksetup -setairportpower airport off" "ifup wlan0")
   :group 'quiet)
 
 (defcustom  quiet-timer 0
-  "Timer to reconnect network after a given time (in minutes). A value of 0 will leave the connection off"
+  "Timer to reconnect network after a given time (in minutes).  A value of 0 will leave the connection off."
   :type 'integer
   :group 'quiet)
 
 ;;;###autoload
 (defun quiet ()
-  "quieten network distractions for a while..."
+  "Quieten network distractions for a while..."
   (interactive)
   (save-window-excursion
     (message "disconnecting...")
     (async-shell-command quiet-disconnect))
   (if (not (= quiet-timer 0))
-      (progn 
+      (progn
 	(run-at-time (* quiet-timer 60) nil 'quiet-reconnect))))
+
+;; provide a 'disconnect' alias
+(fset 'disconnect 'quiet)
 
 ;;;###autoload
 (defun quiet-reconnect ()
+  "Reconnect to networked distractions."
   (interactive)
   (save-window-excursion
     (message "reconnecting after ~%d %s" quiet-timer (if (= quiet-timer 1) "minute" "minutes"))

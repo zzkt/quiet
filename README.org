@@ -1,6 +1,12 @@
-** quiet
+** quiet  
 
 A simple package to disconnect from the online world for a while, possibly reconnecting later. Any interruptions or distractions which occur once the command is run are guaranteed to be local.
+
+[[http://melpa.org/#/quiet][file:http://melpa.org/packages/quiet-badge.svg]]
+
+** installation
+ 
+the package can be installed from melpa ~M-x package-install [RET] quiet [RET]~ 
 
 ** disconnection
 
@@ -10,7 +16,7 @@ the function ~quiet~ can be used anywhere in emacs where a lack of network acces
 
 ** reconnection
 
- ~M-x quiet-reconnect~ will manually reconnect to the network, however you can enable a timer to automatically reconnect by setting ~quiet-timer~ to a number of minutes. e.g. ~(setq quiet-timer 60)~ will enable ~quiet~ to reconnect after one hour. if  ~quiet-timer~ is set to 0 it won't reconnect automatically.
+ ~M-x quiet-reconnect~ will manually reconnect to the network, however you can enable a timer to automatically reconnect by setting ~quiet-timer~ to a number of minutes. e.g. ~(setq quiet-timer 60)~ will enable ~quiet~ to reconnect after one hour. if  ~quiet-timer~ is set to ~0~ it won't reconnect automatically.
 
 ** network interfaces
 
@@ -22,6 +28,6 @@ you may want to ~customize~ or ~setq~ ~quiet-disconnect~ and ~quiet-connect~ to 
 
 ** further 
 
- - Mihaly Csikszentmihályi (1990). Flow: The Psychology of Optimal Experience. Harper & Row. ISBN 9780060162535
- - The Myth of Monotasking. https://hbr.org/2011/11/the-myth-of-monotasking/ 
+ - [[https://www.worldcat.org/title/flow-the-psychology-of-optimal-experience/oclc/848200090][Mihaly Csikszentmihályi (1990). Flow: The Psychology of Optimal Experience. Harper & Row. ISBN 9780060162535]]
+ - [[https://hbr.org/2011/11/the-myth-of-monotasking/][The Myth of Monotasking]].
  
