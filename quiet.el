@@ -45,20 +45,27 @@
 ;;; Code:
 
 
-(defcustom  quiet-disconnect "networksetup -setairportpower airport off"
+(defcustom quiet-disconnect "networksetup -setairportpower airport off"
   "Shell command to turn off network connection(s)."
-  :type 'string
-  :options '("networksetup -setairportpower airport off" "ifdown wlan0")
+  :type  '(choice
+           (string :tag "macOS" "networksetup -setairportpower airport off")
+           (string :tag "GNU/Linux" "ifdown wlan0")
+           (string :tag "*BSD" "ifdown wlan0")
+           (string :tag "other" ""))
   :group 'quiet)
 
-(defcustom  quiet-connect "networksetup -setairportpower airport on"
+(defcustom quiet-connect "networksetup -setairportpower airport on"
   "Shell command to turn on network connection(s)."
-  :type 'string
-  :options '("networksetup -setairportpower airport off" "ifup wlan0")
-  :group 'quiet)
+  :type  '(choice
+           (string :tag "macOS" "networksetup -setairportpower airport on")
+           (string :tag "GNU/Linux" "ifup wlan0")
+           (string :tag "*BSD" "ifup wlan0")
+           (string :tag "other" ""))
+    :group 'quiet)
 
-(defcustom  quiet-timer 0
-  "Timer to reconnect network after a given time (in minutes).  A value of 0 will leave the connection off."
+(defcustom quiet-timer 0
+  "Timer to reconnect network after a given time (in minutes).
+A value of 0 will leave the connection off."
   :type 'integer
   :group 'quiet)
 
@@ -67,11 +74,11 @@
   "Quieten network distractions for a while..."
   (interactive)
   (save-window-excursion
-    (message "disconnecting...")
-    (async-shell-command quiet-disconnect))
+   (message "disconnecting...")
+   (async-shell-command quiet-disconnect))
   (if (not (= quiet-timer 0))
       (progn
-	(run-at-time (* quiet-timer 60) nil 'quiet-reconnect))))
+        (run-at-time (* quiet-timer 60) nil 'quiet-reconnect))))
 
 ;; provide a 'disconnect' alias
 (fset 'disconnect 'quiet)
@@ -81,8 +88,10 @@
   "Reconnect to networked distractions."
   (interactive)
   (save-window-excursion
-    (message "reconnecting after ~%d %s" quiet-timer (if (= quiet-timer 1) "minute" "minutes"))
-    (async-shell-command quiet-connect)))
+   (message "reconnecting after ~%d %s"
+            quiet-timer
+            (if (= quiet-timer 1) "minute" "minutes"))
+   (async-shell-command quiet-connect)))
 
 (provide 'quiet)
 
